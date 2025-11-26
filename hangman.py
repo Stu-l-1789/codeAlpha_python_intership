@@ -1,0 +1,29 @@
+import random
+
+words = ["apple", "tiger", "happy", "green", "river"]
+word = random.choice(words)
+guessed = ["_"] * len(word)
+attempts = 6
+
+print("🎮 Welcome to Hangman!")
+
+while attempts > 0:
+    print("\nWord:", " ".join(guessed))
+    guess = input("Enter a letter: ").lower()
+
+    if guess in word:
+        for i in range(len(word)):
+            if word[i] == guess:
+                guessed[i] = guess
+        print("Correct guess!")
+    else:
+        attempts -= 1
+        print("Wrong! Attempts left:", attempts)
+
+    if "_" not in guessed:
+        print("\n🎉 You Won! The word was:", word)
+        break
+
+if attempts == 0:
+    print("\n💀 Game Over! The word was:", word)
+  //add hangman.py for task 1 
