@@ -1,0 +1,50 @@
+prices = {
+    # Indian Stocks (NSE)
+    "RELIANCE": 2600,
+    "TCS": 3950,
+    "INFY": 1450,
+    "HDFCBANK": 1550,
+    "ICICIBANK": 1050,
+    "HINDUNILVR": 2400,
+    "SBIN": 700,
+    "KOTAKBANK": 1800,
+    "HCLTECH": 1500,
+    "LT": 3550,
+    "ITC": 450,
+    "ONGC": 260,
+    "ADANIPORTS": 830,
+    "ADANIENT": 2500,
+    "WIPRO": 450,
+
+    # US Stocks (optional)
+    "AAPL": 180,
+    "TSLA": 250,
+    "GOOG": 140,
+    "META": 300
+}
+
+portfolio = {}
+total = 0
+
+print("📊 STOCK PORTFOLIO TRACKER (INDIA + US)")
+
+while True:
+    stock = input("Enter stock symbol (or 'done'): ").upper()
+    if stock == "DONE":
+        break
+    
+    if stock not in prices:
+        print("Stock not available in the price list, try again.")
+        continue
+
+    qty = int(input("Enter quantity: "))
+    portfolio[stock] = qty
+
+print("\n-------- Investment Summary --------")
+
+for stock, qty in portfolio.items():
+    value = prices[stock] * qty
+    total += value
+    print(f"{stock}: {qty} shares → ₹{value}")
+
+print("\n💰 Total Investment Value = ₹", total)
